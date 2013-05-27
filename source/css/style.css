@@ -23,8 +23,9 @@ body {
   font-size: 14px;
   line-height: 1.6em;
   color: #666;
-  background-color: #ffffff;
-}
+  /* background-color: #ffffff; */
+  background-color: #f8f8f8;
+} 
 
 h1, h2, h3, h4, h5, h6 {
 	font-family: 'Roboto Condensed', sans-serif;
@@ -306,7 +307,7 @@ nav select {
 
 
 section#intro{
-	background: url(../img/bg/bg-1.jpg) 50% 0 no-repeat fixed;
+	/* background: url(../img/bg/bg-1.jpg) 50% 0 no-repeat fixed; */
 	position:relative;
 	width:100%;
 	height:auto;
@@ -336,7 +337,7 @@ section#intro i  {
 }
 
 section#intro h1  {
-	color:#fff;
+	color:#000;
 	font-size:64px;
 	font-weight:700;
 }
