@@ -3,13 +3,13 @@ jQuery(document).ready(function($) {
 "use strict";
 
 		//add some elements with animate effect
-		$('.icon').addClass("animated fadeInDown");
+		$('.icon').addClass("animated tada");
 		$("#intro").hover(
 			function () {
-			$('.icon').addClass("animated fadeInDown");
+			$('.icon').addClass("animated tada");
 			},
 			function () {
-			$('.icon').removeClass("animated fadeInDown");
+			$('.icon').removeClass("animated tada");
 			}
 		);
 		
