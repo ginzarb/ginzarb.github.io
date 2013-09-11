@@ -19,4 +19,4 @@ after_success:
   - cd build
   - git add -A
   - git commit -m 'Reflect changed sources'
-  - '[ "$TRAVIS_BRANCH" == "source" ] && [ $GH_TOKEN ] && git push --quiet https://$GH_TOKEN@github.com/ginzarb.github.io.git master 2> /dev/null'
+  - '[ "$TRAVIS_BRANCH" == "source" ] && [ $GH_TOKEN ] && git push -f --quiet https://$GH_TOKEN@github.com/ginzarb.github.io.git master 2> /dev/null'
