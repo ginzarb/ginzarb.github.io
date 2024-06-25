@@ -30,13 +30,6 @@ jobs:
     - name: Build with Middleman
       run: bundle exec middleman build
 
-    - name: create token
-      id: create_token
-      uses: actions/create-github-app-token@v1
-      with:
-        app-id: ${{ secrets.APP_ID }}
-        private-key: ${{ secrets.PRIVATE_KEY }}
-
     - name: Deploy
       if: github.ref == 'refs/heads/source'
       run: |
@@ -49,4 +42,3 @@ jobs:
         GIT_COMMITTER_EMAIL: netwillnet@gmail.com
         GIT_AUTHOR_NAME: willnet
         GIT_AUTHOR_EMAIL: netwillnet@gmail.com
-        GITHUB_TOKEN: ${{ steps.create_token.outputs.token }}
