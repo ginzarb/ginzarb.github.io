@@ -32,10 +32,10 @@ jobs:
 
     - name: create token
       id: create_token
-      uses: tibdex/github-app-token@v2
+      uses: actions/create-github-app-token@v1
       with:
-        app_id: ${{ secrets.APP_ID }}
-        private_key: ${{ secrets.PRIVATE_KEY }}
+        app-id: ${{ secrets.APP_ID }}
+        private-key: ${{ secrets.PRIVATE_KEY }}
 
     - name: Deploy
       if: github.ref == 'refs/heads/source'
@@ -43,9 +43,10 @@ jobs:
         cd build
         git add -A
         git commit -m 'Reflect changed sources'
-        git push -f https://${{ steps.create_token.outputs.token }}@github.com/ginzarb/ginzarb.github.io.git master
+        git push -f https://${GITHUB_TOKEN}@github.com/ginzarb/ginzarb.github.io.git master
       env:
         GIT_COMMITTER_NAME: willnet
         GIT_COMMITTER_EMAIL: netwillnet@gmail.com
         GIT_AUTHOR_NAME: willnet
         GIT_AUTHOR_EMAIL: netwillnet@gmail.com
+        GITHUB_TOKEN: ${{ steps.create_token.outputs.token }}
