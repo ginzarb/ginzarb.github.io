@@ -43,7 +43,7 @@ jobs:
         cd build
         git add -A
         git commit -m 'Reflect changed sources'
-        git push -f --quiet https://${{ steps.create_token.outputs.token }}@github.com/ginzarb/ginzarb.github.io.git master 2> /dev/null
+        git push -f https://${{ steps.create_token.outputs.token }}@github.com/ginzarb/ginzarb.github.io.git master
       env:
         GIT_COMMITTER_NAME: willnet
         GIT_COMMITTER_EMAIL: netwillnet@gmail.com
