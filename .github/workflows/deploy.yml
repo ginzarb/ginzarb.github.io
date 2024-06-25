@@ -23,6 +23,13 @@ jobs:
     - name: Install dependencies
       run: bundle install
 
+    - name: Clone target repository
+      run: |
+        git clone --quiet https://github.com/ginzarb/ginzarb.github.io.git build
+        pushd build
+        git checkout -b master
+        popd
+
     - name: Build with Middleman
       run: bundle exec middleman build
 
@@ -32,7 +39,6 @@ jobs:
         cd build
         git config user.name "github-actions[bot]"
         git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-        git checkout -b master
         git add -A
         git commit -m 'Reflect changed sources'
         git push
