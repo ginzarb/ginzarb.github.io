@@ -3,7 +3,7 @@ name: Build and Deploy
 on:
   push:
     branches:
-      - source
+      - retry
 
 permissions:
   contents: write
@@ -34,8 +34,8 @@ jobs:
       run: bundle exec middleman build
 
     - name: Deploy
-      if: github.ref == 'refs/heads/source'
       run: |
+        git remote -v
         cd build
         git remote -v
         git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
