@@ -39,7 +39,7 @@ jobs:
         cd build
         git add -A
         git commit -m 'Reflect changed sources'
-        git push -f origin master
+        git push -f https://$GITHUB_TOKEN@github.com/ginzarb/ginzarb.github.io.git master
       env:
         GIT_COMMITTER_NAME: willnet
         GIT_COMMITTER_EMAIL: netwillnet@gmail.com
