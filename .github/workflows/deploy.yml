@@ -8,38 +8,24 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
     - uses: actions/checkout@v4
-
     - name: Setup Ruby
       uses: ruby/setup-ruby@v1
       with:
         ruby-version: 3
-
-    - name: Install dependencies
-      run: bundle install
-
-    - name: Clone target repository
-      run: |
-        git clone --quiet https://github.com/ginzarb/ginzarb.github.io.git build
-        pushd build
-        git checkout -b master
-        popd
-
     - name: Build with Middleman
       run: bundle exec middleman build
-
-    - name: Deploy
-      if: github.ref == 'refs/heads/source'
-      run: |
-        cd build
-        git add -A
-        git commit -m 'Reflect changed sources'
-        git push -f origin master
-      env:
-        GIT_COMMITTER_NAME: willnet
-        GIT_COMMITTER_EMAIL: netwillnet@gmail.com
-        GIT_AUTHOR_NAME: willnet
-        GIT_AUTHOR_EMAIL: netwillnet@gmail.com
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - name: Upload artifact
+      uses: actions/upload-pages-artifact@v3
+      with:
+        path: "build/"
+  deploy:
+    permissions:
+      pages: write
+      id-token: write
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
