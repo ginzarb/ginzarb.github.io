@@ -4,3 +4,4 @@ source 'http://rubygems.org'
 
 gem "middleman"
 gem "bigdecimal"
+gem "mutex_m"
